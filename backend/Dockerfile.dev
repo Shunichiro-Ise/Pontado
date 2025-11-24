@@ -1,0 +1,13 @@
+# backend/Dockerfile.dev
+FROM node:22
+
+WORKDIR /usr/src/app
+
+# 依存関係だけ先に入れるとキャッシュされて速い
+COPY package*.json ./
+RUN npm install
+
+# ソースコードは volume マウントするのでここではコピーしない
+EXPOSE 3000
+
+# 実行コマンドは docker-compose 側で指定する

@@ -5,9 +5,11 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // 🔴 ここを追加
   app.enableCors({
-    origin: 'http://localhost:5173', // Vite の開発サーバ
+    origin: [
+      'http://localhost:5173', // 直接 Vite を起動したとき
+      'http://localhost:3000', // docker-compose で起動したとき
+    ],
     credentials: true,
   });
 
