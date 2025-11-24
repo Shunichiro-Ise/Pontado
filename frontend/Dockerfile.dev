@@ -1,0 +1,12 @@
+# frontend/Dockerfile.dev
+FROM node:22
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+RUN npm install
+
+# ソースコードは volume マウントする
+EXPOSE 5173
+
+# 実行コマンドは docker-compose 側で指定する
