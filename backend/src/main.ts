@@ -10,7 +10,6 @@ async function bootstrap() {
       'http://localhost:5173',
       'http://localhost:3000',
       'https://d3jd5z33zivvds.cloudfront.net',
-      // 本番の CloudFront ドメインは後でここに追加
     ],
     credentials: true,
   });
