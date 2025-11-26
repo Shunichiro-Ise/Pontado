@@ -1,18 +1,6 @@
 version: "3.9"
 
 services:
-  db:
-    image: postgres:16
-    container_name: pontado-db
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-    ports:
-      - "5432:5432"
-    volumes:
-      - db-data:/var/lib/postgresql/data
-
   backend:
     build:
       context: ./backend
@@ -26,11 +14,8 @@ services:
       - .env
     environment:
       NODE_ENV: development
-      DB_HOST: db
     ports:
       - "4000:3000"    # ホスト4000→コンテナ3000(Nest)
-    depends_on:
-      - db
 
   frontend:
     build:
@@ -51,6 +36,3 @@ services:
       - "3000:5173"    # ホスト3000→コンテナ5173(Vite)
     depends_on:
       - backend
-
-volumes:
-  db-data:
