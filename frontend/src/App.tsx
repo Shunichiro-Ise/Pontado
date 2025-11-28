@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div>
-      <h1>Pontado</h1>
+      <h1>This page is to be Pontado... one day?</h1>
       <p>Backend health: {error ?? health}</p>
     </div>
   );
